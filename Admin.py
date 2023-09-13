@@ -17,7 +17,7 @@ class Admin(User):
                 print(f"- {user.firstname} {user.lastname}")
 
     def manage_user(self):
-        pass
+        print("gettings user")
 
 if __name__ == "__main__":
     # Create some user objects (students and teachers)
