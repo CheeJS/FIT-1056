@@ -45,3 +45,4 @@ if __name__ == "__main__":
 
     # Call the view_student_progress method to view learner progress
     teacher.view_student_progress([learner1, learner2], all_quizzes)
+    print("hi")
