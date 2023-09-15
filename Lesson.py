@@ -5,8 +5,5 @@ class Lesson:
         self.content = content
         self.type = "lesson"
 
-    def display_lesson(self):
-        print("Displaying content")
-
 if __name__ == "__main__":
     pass
