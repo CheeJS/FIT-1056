@@ -10,6 +10,9 @@ class Learner(User):
 
 
     def attempt_quiz(self, quizzes):
+        if not quizzes:
+            messagebox.showinfo("No quizzes", "There are no quizzes available.")
+            return
         def submit_quiz():
             quiz_id = quiz_var.get()
             self.quiz_attempts = {}

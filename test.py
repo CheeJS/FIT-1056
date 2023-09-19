@@ -88,86 +88,107 @@ def logout(admin_window,registered_users,lessons,quizzes):
     admin_window.destroy()  # Destroy the admin window
     login_menu(registered_users,lessons,quizzes)
 
-
-
-def teacher_main(authenticated_teacher:Teacher, registered_users,lessons,quizzes):
+def teacher_main(authenticated_teacher, registered_users, lessons, quizzes):
     teacher_window = tk.Tk()
     teacher_window.title("Teacher Dashboard")
-    teacher_window.geometry("800x600")  # Set the size of the admin window
+    teacher_window.geometry("800x600")
 
-    # Create and place teacher interface widgets
-    label = tk.Label(teacher_window, text=f"Welcome, {authenticated_teacher.username}!", font=("Arial", 16))
-    label.pack(pady=20)
+    # Create a welcome label
+    welcome_label = tk.Label(teacher_window, text=f"Welcome, {authenticated_teacher.username}!", font=("Arial", 16))
+    welcome_label.pack(pady=20)
+
+    # Create a frame to group the action buttons
+    action_frame = tk.Frame(teacher_window)
+    action_frame.pack()
 
     # Buttons for teacher actions
-    view_learner_button = tk.Button(teacher_window, text="View Learners", command=lambda: authenticated_teacher.view_students(registered_users), font=("Arial", 14))
-    view_learner_button.pack()
+    view_learner_button = tk.Button(action_frame, text="View Learners", command=lambda: authenticated_teacher.view_students(registered_users), font=("Arial", 14))
+    view_learner_button.grid(row=0, column=0, padx=10, pady=10)
+
+    register_learner_button = tk.Button(action_frame, text="Register New Learner", command=lambda: authenticated_teacher.register_learner(registered_users), font=("Arial", 14))
+    register_learner_button.grid(row=0, column=1, padx=10, pady=10)
 
     ##view_learner_grade_button = tk.Button(teacher_window, text="View Learners' grade", command=lambda: authenticated_teacher.view_grade(registered_users), font=("Arial", 14))
     ##view_learner_grade_button.pack()
 
-    register_learner_button = tk.Button(teacher_window, text="Register New Learner", command=lambda:authenticated_teacher.register_learner(registered_users), font=("Arial", 14))
-    register_learner_button.pack()
+    add_lessons_button = tk.Button(action_frame, text="Add Lessons", command=lambda: authenticated_teacher.add_lesson(lessons), font=("Arial", 14))
+    add_lessons_button.grid(row=1, column=0, padx=10, pady=10)
 
-    add_lessons_button = tk.Button(teacher_window, text="Add Lessons", command=lambda:authenticated_teacher.add_lesson(lessons), font=("Arial", 14))
-    add_lessons_button.pack()
+    add_quizzes_button = tk.Button(action_frame, text="Add Quizzes", command=lambda: authenticated_teacher.add_quiz(quizzes), font=("Arial", 14))
+    add_quizzes_button.grid(row=1, column=1, padx=10, pady=10)
 
-    add_quizzes_button = tk.Button(teacher_window, text="Add Quizzes", command=lambda:authenticated_teacher.add_quiz(quizzes), font=("Arial", 14))
-    add_quizzes_button.pack()
-
-    logout_button = tk.Button(teacher_window, text="Log Out", command=lambda:logout(teacher_window,registered_users,lessons,quizzes), font=("Arial", 14))
+    logout_button = tk.Button(teacher_window, text="Log Out", command=lambda: logout(teacher_window, registered_users, lessons, quizzes), font=("Arial", 14))
     logout_button.pack(pady=20)
 
     teacher_window.mainloop()
 
-def learner_main(authenticated_learner:Learner, registered_users,lessons,quizzes):
+
+def learner_main(authenticated_learner, registered_users, lessons, quizzes):
     learner_window = tk.Tk()
     learner_window.title("Learner Dashboard")
-    learner_window.geometry("800x600")  # Set the size of the admin window
+    learner_window.geometry("800x600")
+
+    
+    # Create a frame for better organization
+    frame = tk.Frame(learner_window)
+    frame.pack(padx=20, pady=20, fill=tk.BOTH, expand=True)
 
     # Create and place learner interface widgets
-    label = tk.Label(learner_window, text=f"Welcome, {authenticated_learner.username}!", font=("Arial", 16))
+    label = tk.Label(frame, text=f"Welcome, {authenticated_learner.username}!", font=("Arial", 16))
     label.pack(pady=20)
 
-    # Buttons for learner actions
+    # Create a frame for action buttons
+    button_frame = tk.Frame(frame)
+    button_frame.pack(pady=20)
 
-    view_lessons_button = tk.Button(learner_window, text="View Lessons", command=lambda:authenticated_learner.view_lessons(lessons), font=("Arial", 14))
-    view_lessons_button.pack()
+    button_style = {"font": ("Arial", 14), "width": 20}
 
-    attempt_quiz_button = tk.Button(learner_window, text="Attempt quizzes (Half Way)", command=lambda:authenticated_learner.attempt_quiz(quizzes), font=("Arial", 14))
-    attempt_quiz_button.pack()
+    view_lessons_button = tk.Button(button_frame, text="View Lessons", command=lambda: authenticated_learner.view_lessons(lessons), **button_style)
+    view_lessons_button.grid(row=0, column=0, padx=10, pady=10)
 
-    view_grade__button = tk.Button(learner_window, text="View your grades (Not Yet)", command=lambda:authenticated_learner.register_learner(registered_users), font=("Arial", 14))
-    view_grade__button.pack()
+    attempt_quiz_button = tk.Button(button_frame, text="Attempt Quizzes", command=lambda: authenticated_learner.attempt_quiz(quizzes), **button_style)
+    attempt_quiz_button.grid(row=0, column=1, padx=10, pady=10)
 
-    logout_button = tk.Button(learner_window, text="Log Out", command=lambda:logout(learner_window,registered_users,lessons,quizzes), font=("Arial", 14))
+    view_grades_button = tk.Button(button_frame, text="View Your Grades", command=lambda: authenticated_learner.register_learner(registered_users), **button_style)
+    view_grades_button.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
+
+    logout_button = tk.Button(frame, text="Log Out", command=lambda: logout(learner_window, registered_users, lessons, quizzes), font=("Arial", 14))
     logout_button.pack(pady=20)
 
     learner_window.mainloop()
 
-def admin_main(authenticated_admin :Admin,registered_users,lessons,quizzes):
+def admin_main(authenticated_admin, registered_users, lessons, quizzes):
     admin_window = tk.Tk()
     admin_window.title("Admin Dashboard")
-    admin_window.geometry("800x600")  # Set the size of the admin window
+    admin_window.geometry("800x600")
 
-    # Create and place admin interface widgets
-    label = tk.Label(admin_window, text=f"Welcome, {authenticated_admin.username}!", font=("Arial", 16))
+    # Create a frame for the header
+    header_frame = tk.Frame(admin_window, bg="blue")
+    header_frame.pack(fill="x")
+
+    # Header label
+    label = tk.Label(header_frame, text=f"Welcome, {authenticated_admin.username}!", font=("Arial", 16), bg="blue", fg="white")
     label.pack(pady=20)
 
-    # Buttons for admin actions
-    view_teachers_button = tk.Button(admin_window, text="View Teachers", command=lambda: authenticated_admin.view_teachers(registered_users), font=("Arial", 14))
-    view_teachers_button.pack()
+    # Create a frame for the buttons
+    button_frame = tk.Frame(admin_window)
+    button_frame.pack(pady=20)
 
-    view_learners_button = tk.Button(admin_window, text="View Learners", command=lambda:authenticated_admin.view_students(registered_users), font=("Arial", 14))
-    view_learners_button.pack()
+    # Buttons with custom styling
+    button_style = {"font": ("Arial", 14), "width": 20}
+    view_teachers_button = tk.Button(button_frame, text="View Teachers", command=lambda: authenticated_admin.view_teachers(registered_users), **button_style)
+    view_teachers_button.grid(row=0, column=0, padx=10, pady=10)
 
-    register_teacher_button = tk.Button(admin_window, text="Register New Teacher", command=lambda:authenticated_admin.register_teacher(registered_users), font=("Arial", 14))
-    register_teacher_button.pack()
+    view_learners_button = tk.Button(button_frame, text="View Learners", command=lambda: authenticated_admin.view_students(registered_users), **button_style)
+    view_learners_button.grid(row=0, column=1, padx=10, pady=10)
 
-    register_learner_button = tk.Button(admin_window, text="Register New Learner", command=lambda:authenticated_admin.register_learner(registered_users), font=("Arial", 14))
-    register_learner_button.pack()
+    register_teacher_button = tk.Button(button_frame, text="Register New Teacher", command=lambda: authenticated_admin.register_teacher(registered_users), **button_style)
+    register_teacher_button.grid(row=1, column=0, padx=10, pady=10)
 
-    logout_button = tk.Button(admin_window, text="Log Out", command=lambda:logout(admin_window,registered_users,lessons,quizzes), font=("Arial", 14))
+    register_learner_button = tk.Button(button_frame, text="Register New Learner", command=lambda: authenticated_admin.register_learner(registered_users), **button_style)
+    register_learner_button.grid(row=1, column=1, padx=10, pady=10)
+
+    logout_button = tk.Button(admin_window, text="Log Out", command=lambda: logout(admin_window, registered_users, lessons, quizzes), font=("Arial", 14))
     logout_button.pack(pady=20)
 
     admin_window.mainloop()

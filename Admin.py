@@ -66,7 +66,7 @@ class Admin(User):
         # Create a pop-up window for teacher registration
         register_window = tk.Toplevel()
         register_window.title("Register New Learner")
-
+        register_window.geometry("800x600")
         # Create labels and entry fields
         first_name_label = tk.Label(register_window, text="First Name:")
         last_name_label = tk.Label(register_window, text="Last Name:")
@@ -115,12 +115,12 @@ class Admin(User):
         # Create a pop-up window for teacher registration
         register_window = tk.Toplevel()
         register_window.title("Register New Teacher")
-
+        register_window.geometry("800x600")
         # Create labels and entry fields
-        first_name_label = tk.Label(register_window, text="First Name:")
-        last_name_label = tk.Label(register_window, text="Last Name:")
-        username_label = tk.Label(register_window, text="Username:")
-        password_label = tk.Label(register_window, text="Password:")
+        first_name_label = tk.Label(register_window, text="First Name:", font=("Arial", 14))
+        last_name_label = tk.Label(register_window, text="Last Name:", font=("Arial", 14))
+        username_label = tk.Label(register_window, text="Username:", font=("Arial", 14))
+        password_label = tk.Label(register_window, text="Password:", font=("Arial", 14))
 
         first_name_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
         last_name_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
