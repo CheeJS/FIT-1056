@@ -2,7 +2,7 @@
 import tkinter as tk
 
 # Local application imports
-from week09_loginframe import LoginFrame
+from login_interface import LoginFrame
 from application_layer import Application
 
 

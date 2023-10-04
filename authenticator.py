@@ -1,5 +1,5 @@
 # Local application imports
-from week09_user import User
+from User import User
 from Admin import Admin
 from Student import Student
 from Teacher import Teacher

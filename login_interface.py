@@ -2,7 +2,7 @@
 import tkinter as tk
 
 # Local application imports
-from week09_authenticator import Authenticator
+from authenticator import Authenticator
 from learner_interface import LearnerFrame
 from admin_interface import AdminFrame
 from teacher_interface import TeacherFrame
