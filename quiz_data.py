@@ -53,23 +53,53 @@ quiz_data = [
     [
     {
         "question": "Which of the following is a valid list?",
-        "choices": ["China", "Japan", "South Korea", "Thailand"],
-        "answer": "Japan"
+        "choices": ["(‘1’,’2’)", "{‘a’, ‘b’}", "[‘a’, 1]", "[a, 1]"],
+        "answer": "[‘a’, 1]"
     },
     {
-        "question": "What ggggg France?",
-        "choices": ["Paris", "London", "Berlin", "Madrid"],
-        "answer": "Paris"
+        "question": "In the string ‘Python’, which letter is index 2?",
+        "choices": ["y", "t", "p", "o"],
+        "answer": "t"
     },
     {
-        "question": "What is the largest planet in our solar system?",
-        "choices": ["Jupiter", "Saturn", "Mars", "Earth"],
-        "answer": "Jupiter"
+        "question": "If list = [2, 3, 4, 5], what is the output of list[1]?",
+        "choices": ["error", "1", "2", "3"],
+        "answer": "3"
     },
     {
-        "question": "What is the chemical symbol for gold?",
-        "choices": ["Go", "Au", "Ag", "Gd"],
-        "answer": "Au"
+        "question": "If list = [2, 3, 4, 5], what is the output of list[:2]?",
+        "choices": ["[2,3]", "[2,3,4]", "2,3", "4"],
+        "answer": "[2,3]"
+    },
+    {
+        "question": "If list = [1,2, 3], what is the output of list*2?",
+        "choices": ["[2, 4, 6]", "[1, 1, 2, 2, 3, 3]", "[1, 2, 3, 1, 2, 3]", "error"],
+        "answer": "[1, 2, 3, 1, 2, 3]"
+    },
+    {
+        "question": "Which of the following is a valid way of printing using the f strings syntax?",
+        "choices": ["print(f”printing in python with a {variable}”)", "print(“\f printing in python with a (variable)”)", "print(f”printing in python with a [variable]”)", "printf(”printing in python with a {variable}”)"],
+        "answer": "print(f”printing in python with a {variable}”)"
+    },
+    {
+        "question": "If list = [2, 3, 4, 5], what is the output of list.append(1)?",
+        "choices": ["list = [3, 4, 5]", "list = [2, 3, 4, 5,1]", "list = [1, 2, 3, 4, 5]", "list = [1]"],
+        "answer": "list = [2, 3, 4, 5,1]"
+    },
+    {
+        "question": "If string = ‘314159’, what is the output of string.count(1)?",
+        "choices": ["1", "2", "3", "error"],
+        "answer": "2"
+    },
+    {
+        "question": "If list = [2,3,1,4,1], what is the output of string.remove(1)?",
+        "choices": ["[2,1,4,1]", "[3,1,4,1]", "[2,3,1,4]", "[2,3,4,1]"],
+        "answer": "[2,3,4,1]"
+    },
+    {
+        "question": "If string = “python string”, what is the output of string.remove(‘t’)?",
+        "choices": ["[“py”, “hon”,  “s”, “ring”]", "“pyhon spring”", "[“py”, “hon s”, “ring”]", "[“pyhon”, “sring”]"],
+        "answer": "[“py”, “hon s”, “ring”]"
     }
 ],
     [

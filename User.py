@@ -44,6 +44,7 @@ class User:
         :return: bool
         """
         return self.__is_active
+    
 
 
 if __name__ == "__main__":

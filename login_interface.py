@@ -1,37 +1,32 @@
-
-
-
 # Third party imports
 import tkinter as tk
 
 # Local application imports
 from authenticator import Authenticator
-from learner_interface import LearnerFrame
-from admin_interface import AdminFrame
-from teacher_interface import TeacherFrame
-from application_layer import Application 
-
-
+from application_layer import Application
+from signup_interface import SignUpFrame
 class LoginFrame(tk.Frame):
     """
     The class definition for the LoginFrame class.
     """
 
-    def __init__(self, master,app):
+    def __init__(self, master):
         """
         Constructor for the LoginFrame class.
         :param master: Tk object; the main window that the
                        login frame is to be contained.
         """
         super().__init__(master=master)
-        self.app_layer =  app
-
+        self.app_layer = Application(master)
+        self.signup_interface = SignUpFrame(master)
+        self.auth = Authenticator()
+        
         # Logo image for the login page
         login_canvas = tk.Canvas(master=self, width=128, height=128)
         login_canvas.grid(row=0, columnspan=2, sticky=tk.S, padx=10, pady=10)
 
 
-        image_path = "./images/week09_image.png"
+        image_path = "./images/python.png"
         self.login_logo = tk.PhotoImage(file=image_path)
         login_canvas.create_image(0, 0,
                                   anchor=tk.NW,
@@ -73,24 +68,35 @@ class LoginFrame(tk.Frame):
                                  command=self.authenticate_login)
         login_button.grid(row=4, columnspan=2, padx=10, pady=10)
 
+
+        self.login_text = tk.StringVar()
+        self.login_outcome_label = tk.Label(master=self, textvariable=self.login_text, font=("Arial", 12))
+        self.login_outcome_label.grid(row=6, columnspan=2, padx=10, pady=10, sticky=tk.N)  # Centered
+
+         # Button to Sign Up
+        sign_up = tk.Button(master=self, text="Sign Up", command=lambda:self.app_layer.add_user(2))
+        sign_up.grid(row=5, columnspan=3, padx=10, pady=10)
         
-
-
+        
     def authenticate_login(self):
-        authenticator = Authenticator()
-        if authenticator.authenticate(self.username.get(),
-                                  self.password.get()):
-            self.destroy()  # Destroy the login frame
-            if authenticator.authenticate_get_role(self.username.get(), self.password.get()) == "AD":
-                interface = AdminFrame(self.master,self.app_layer,self.username.get())
-            elif authenticator.authenticate_get_role(self.username.get(), self.password.get()) == "TA":
-                interface = TeacherFrame(self.master,self.app_layer,self.username.get())
-            elif authenticator.authenticate_get_role(self.username.get(), self.password.get()) == "LR":
-                interface = LearnerFrame(self.master,self.app_layer,self.username.get())
-
-            interface.grid(row=0, column=0, rowspan=2, sticky="nsew")  # Make the interface span two rows
-            interface.grid_columnconfigure(0, weight=1)  # Make column 0 expand to fill available space
-            interface.pack(side="left", fill="both")  # Display and align to the left
+        if self.auth.authenticate(self.username.get(),self.password.get()):   
+            username = self.username.get()   
+            password =  self.password.get()
+            self.username_entry.delete(0, tk.END)
+            self.password_entry.delete(0,tk.END)    
+            self.place_forget()                                            
+            role = self.auth.authenticate_get_role(username, password)
+            if role == "AD":
+                interface = self.master.admin_frame
+            elif role == "TA":
+                interface = self.master.teacher_frame
+            elif role == "LR":
+                self.master.learner_frame.username = username
+                interface = self.master.learner_frame
+            
+            interface.grid(row=0, column=0, rowspan=2, sticky="nsew")  
+            interface.grid_columnconfigure(0, weight=1)  
+            interface.pack(side="left", fill="both")  
 
         else:
             self.login_text.set("Failed to login")
@@ -98,5 +104,4 @@ class LoginFrame(tk.Frame):
 
 
 if __name__ == "__main__":
-
     pass

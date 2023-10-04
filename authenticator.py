@@ -45,6 +45,8 @@ class Authenticator:
         :param input_password: str - password entered by the user
         :return: bool
         """
+        self.users = []
+        self.load_users()
         for user_obj in self.users:
             if user_obj.get_username() == input_username:
                 # If username is found
@@ -57,7 +59,10 @@ class Authenticator:
                     return False
         # Account does not exist
         return False
+    
     def authenticate_get_role(self, input_username, input_password):
+        self.users = []
+        self.load_users()
         for user_obj in self.users:
             if user_obj.get_username() == input_username:
                 # If username is found
@@ -70,6 +75,5 @@ class Authenticator:
                     return None
         # Account does not exist
         return None
-
 if __name__ == "__main__":
     pass
