@@ -22,7 +22,7 @@ class Application:
         # Initialize any necessary resources or settings here
         self.width = width
         self.height = height
-        self.file_path = "./data/week09_users.txt"
+        self.file_path = "./data/user_data.txt"
         self.lesson_data_path = "./lesson_data/"
         self.all_users = {}
         self.students = {}
@@ -38,15 +38,16 @@ class Application:
 
 
     def add_student(self):
+        
         def validate():
             firstName= entry_1.get()
             lastName= entry_2.get()
             username = entry_3.get()
             password = entry_4.get()
             if (firstName=="" or lastName=="" or username=="" or password=="" ):
-                self.students[username] = Student(fName=firstName,lName=lastName,username=username,password=password)
                 tkinter.messagebox.showinfo('Invalid Message Alert',"Fields cannot be left empty!")
             else:
+                self.students[username] = Student(fName=firstName,lName=lastName,username=username,password=password)
                 tkinter.messagebox.showinfo('Success Message',"Successfully registered!")
         add_student_window = tk.Toplevel()
         add_student_window.title("Add Student")
@@ -389,9 +390,9 @@ class Application:
             username = entry_3.get()
             password = entry_4.get()
             if (firstName=="" or lastName=="" or username=="" or password=="" ):
-                self.students[username] = Student(fName=firstName,lName=lastName,username=username,password=password)
                 tkinter.messagebox.showinfo('Invalid Message Alert',"Fields cannot be left empty!")
             else:
+                self.teachers[username] = Teacher(fName=firstName,lName=lastName,username=username,password=password)
                 tkinter.messagebox.showinfo('Success Message',"Successfully registered!")
         add_student_window = tk.Toplevel()
         add_student_window.title("Add Student")

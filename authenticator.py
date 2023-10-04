@@ -6,7 +6,7 @@ from Teacher import Teacher
 
 class Authenticator:
 
-    def __init__(self, file_path="./data/week09_users.txt"):
+    def __init__(self, file_path="./data/user_data.txt"):
         self.file_path = file_path
         self.users = []
         self.load_users()

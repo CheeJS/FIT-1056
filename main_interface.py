@@ -1,3 +1,7 @@
+'''
+This file shows the opening interface. 
+The interface class is created to state the welcome message and set the geometry of the interface.
+'''
 # Third party imports
 import tkinter as tk
 
@@ -5,7 +9,7 @@ import tkinter as tk
 from login_interface import LoginFrame
 from application_layer import Application
 
-
+#Class for opening interface, sets geometry
 class Interface(tk.Tk):
     """
     Class definition for the Interface class
@@ -24,11 +28,11 @@ class Interface(tk.Tk):
         self.title(title)
         self.geometry(f"{width}x{height}")  # Set the window geometry
 
-
+#Sets the text that is displayed and where
 if __name__ == "__main__":
-    hcms = Interface("Health Clinic Management System")
-    app = Application(hcms.width,hcms.height)
-    login = LoginFrame(hcms,app)
+    codeventure = Interface("Welcome to the CodeVenture Learning Program")
+    app = Application(codeventure.width,codeventure.height)
+    login = LoginFrame(codeventure,app)
     login.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-    hcms.mainloop()
+    codeventure.mainloop()
     print("--- End of program execution ---")

@@ -1,3 +1,6 @@
+
+
+
 # Third party imports
 import tkinter as tk
 
@@ -36,8 +39,8 @@ class LoginFrame(tk.Frame):
 
         # Label containing the welcome heading
         login_title = tk.Label(master=self,
-                               text="Welcome to Health "
-                                    "Clinic Management System",
+                               text="Welcome to the "
+                                    "CodeVenture learning program",
                                font=("Arial Bold", 25))
         login_title.grid(row=1, columnspan=2, padx=10, pady=10)
 
@@ -72,19 +75,11 @@ class LoginFrame(tk.Frame):
 
         
 
-        # Variable and label to inform user of login outcome
-        self.login_text = tk.StringVar()
-
-        self.login_outcome_label = tk.Label(master=self, textvariable=self.login_text, font=("Arial", 12))
-        self.login_outcome_label.grid(row=5, columnspan=2, padx=10, pady=10, sticky=tk.N)  # Centered
-
-
 
     def authenticate_login(self):
         authenticator = Authenticator()
         if authenticator.authenticate(self.username.get(),
                                   self.password.get()):
-            self.login_text.set("Login successfully!")
             self.destroy()  # Destroy the login frame
             if authenticator.authenticate_get_role(self.username.get(), self.password.get()) == "AD":
                 interface = AdminFrame(self.master,self.app_layer,self.username.get())
@@ -103,9 +98,5 @@ class LoginFrame(tk.Frame):
 
 
 if __name__ == "__main__":
-    # Feel free to amend this block while working or testing,
-    # but any amendments here should be reverted upon submission.
-    # You will not be assessed for any work here, but if any code
-    # written here causes an error when running week09_interface.py,
-    # then marks will be deducted.
+
     pass
