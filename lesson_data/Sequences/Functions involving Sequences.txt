@@ -1,0 +1,19 @@
+Python contains built-in functions which can be used to perform common operations.
+We will be focusing on len() and print() in CodeVenture
+
+print() simply prints a string or variable. Strings require to be surrounded by “ “.
+There are many ways to print a string and variable in the same print statement, however we will be using the ‘f strings’ format.
+
+Example:
+Name = “John”
+print(f”Hello, my name is {Name}!”)
+Returns -> Hello, my name is John!
+
+len() is used to find the length of a string or list in python.
+Applied to a string, len() returns the number of characters in the string
+Applied to a list, len() returns the number of elements in the list.
+
+Example: 
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+len(List) returns ‘4’ as List is 4 elements long
+len(List[2]) returns ‘1’ as ‘a’ is 1 character long

@@ -1,0 +1,12 @@
+Operators can be used to perform arithmetic such as addition, subtraction, multiplication etc.
+
+EXAMPLES:
++ : Addition - : Subtraction * : Multiplication / : Division ** : Exponentiation
+
+“The above are basic examples of operators which can be used between values and variables in calculations.
+
+EXAMPLE:
+a=2
+b=3
+Sum = a+b
+print(sum) -> returns ‘5’ 

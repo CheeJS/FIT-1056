@@ -1,0 +1,11 @@
+Slicing is used to extract multiple elements at once.
+This is done by using a colon between numbers in square brackets, [n:m].
+The returned value contains elements from index n to index m-1.
+
+EXAMPLE 1: 
+University = “monash” 
+University[2:] returns ‘nash’, as the index [2] extracts the third element in the string, and the index : returns the rest of the string..
+
+EXAMPLE 2:
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+List[:3] returns ['this', 'is', 'a'], as the index : extracts all elements in the list until index [3-1] (2).

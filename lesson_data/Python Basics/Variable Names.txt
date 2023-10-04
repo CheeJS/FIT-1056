@@ -1,0 +1,14 @@
+It is important to choose variable names with proper programming practices and syntax
+Variables must begin with a letter or underscore and cannot contain spaces
+
+EXAMPLES: a, _b 
+
+If this is not followed, you will receive an error
+
+EXAMPLES: 2a, $b 
+
+Additionally, if a protected ‘keyword’ is used, you will receive an error.
+
+EXAMPLES: if, and, try, class, True, not…
+
+It is good practice to not start a variable with a capital letter, but it is not required

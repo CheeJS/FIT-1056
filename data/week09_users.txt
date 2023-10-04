@@ -1,0 +1,10 @@
+f,Last,admin,admin,AD,1
+first,Last,admin2,admin2,AD,1
+first,Last,1,1,LR,1
+first,Last,reception2,reception2pw,LR,1
+first,Last,reception3,reception3pw,LR,1
+first,Last,2,2,TA,1
+first,Last,300002,fr3d3r1c,TA,1
+first,Last,300003,j0hann,TA,1
+first,Last,300004,beeth0v3n,TA,1
+first,Last,300005,130nard0,TA,1

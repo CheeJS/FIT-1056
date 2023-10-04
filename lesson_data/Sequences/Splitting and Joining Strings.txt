@@ -1,0 +1,17 @@
+The method .split(item) is used to separate a string into a list of words
+If there is no item, spaces between words are used to split the string.
+
+EXAMPLE:
+String = “splitting this string”
+print(String.split()) returns [“splitting”, “this”, “string”]
+
+If there is an item, it is removed from the string, and the string is separated accordingly
+EXAMPLE:
+String = “splitting this string”
+print(String.split(“in”)) returns [“splitt”, “g this str”, “g”]
+
+“Item”.join([list]) is used to join a list into a string using an item.
+
+EXAMPLE:
+“-”.join([“list”, “to”, string”])
+Returns “list-to-string”, as the item “-” joins all elements in the list.

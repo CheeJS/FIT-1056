@@ -1,0 +1,27 @@
+Common list methods include:
+.append(item) - Adds a new item to the end of a list 
+.insert(position, item) - Inserts a new item at the position given 
+.pop() - Removes and returns the last item of a list 
+.count(item) - Returns the number of occurrences of item 
+.remove(item) - Removes the first occurrence of item
+
+EXAMPLE:
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+List.insert(3,‘python’) 
+Entering print(List) returns: [‘This’, ‘is’, ‘a’, ‘python’, ‘list’]
+
+Common string methods include:
+.upper() - Returns a string with all cased characters converted to uppercase 
+.lower() - Returns a string with all cased characters converted to lowercase 
+.index(item) - Returns the index of the first occurrence of item in the string
+.strip() - Returns a string with the leading and trailing whitespace removed 
+.replace(old, new) Returns a string with the first occurrence of the ‘old’ substring replaced with ‘new’
+
+EXAMPLE:
+String = “ John Smith ”
+Upper = String.upper()
+Strip = Upper.strip()
+Replace = Strip..replace(“SMITH”, “Doe”)
+Entering print(String) returns: “JOHN Doe”
+
+Remember these as they will be tested!

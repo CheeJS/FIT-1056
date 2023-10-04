@@ -1,9 +1,9 @@
-
 class Quiz:
-    def __init__(self, quiz_id, title, questions,answer=0):
-        self.quiz_id = quiz_id
-        self.title = title
-        self.questions = questions
-        self.grades = {}  # Dictionary to store quiz grades
-        self.type = "quiz"
+    def __init__(self,topic,question,choices,answer,quiz_data) -> None:
+        self.topic =topic
+        self.question = question
+        self.choices = choices
         self.answer = answer
+        self.full_grade = len(quiz_data)
+
+

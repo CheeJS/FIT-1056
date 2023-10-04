@@ -1,0 +1,7 @@
+Our final section in lesson 1 covers inputs.
+Python has an in-built feature, ‘input()’ which can be used to interact with, and store values from a user.
+
+EXAMPLE: 
+fav_number = input(“Please enter your favourite number” )
+If the user enters ‘5’,
+print(fav_number) returns ‘5’.

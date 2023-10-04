@@ -1,0 +1,7 @@
+Variables are the names of things which values are assigned to
+‘=’ is used to assign a variable to a value
+
+EXAMPLE: b=5
+Now, ‘b’ can be called at any time, which contains the value, ‘5’ 
+We can use then use variable b’s value in mathematical operations or print statements for example
+NOTE: We are not saying b is equal to 5, we are assigning b to the value 5

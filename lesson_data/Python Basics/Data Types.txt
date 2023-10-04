@@ -1,0 +1,10 @@
+Data types define the type of a value.
+There are many kinds of data types in Python…
+
+EXAMPLES: 
+Integer - ‘int’ (e.g. 3)
+Float - ‘float’ (e.g. 8.51)
+String - ‘str’ (e.g. “Hi”) 
+Boolean - ‘bool’ (e.g. True) 
+
+It is important to know what data type a value is for certain inputs and operations. (These will be covered in future modules)

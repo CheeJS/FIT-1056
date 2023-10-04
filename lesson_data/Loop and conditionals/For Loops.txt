@@ -1,0 +1,28 @@
+For loops are used to iterate through a sequence until each element in the specified range has been considered. This allows us to perform a task multiple times in one block of code.
+The general syntax involves: 
+
+for <variable name> in <sequence>:
+     <Action>
+
+EXAMPLE 1:
+
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+For i in List:
+    print(i)
+
+It Returns,
+    This
+    is
+    a
+    list
+
+As for each element in List, ‘i’ is being updated and printed.
+
+We can use the range function and len to iterate through the length of a list.
+This allows us to work with indexes, giving us more possibilities. 
+
+EXAMPLE 2:
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+For i in range(len(List)):
+    print(List[i])
+Returns the same result as Example 1.

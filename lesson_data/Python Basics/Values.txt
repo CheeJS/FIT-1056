@@ -1,0 +1,7 @@
+A value is one of the most important and common aspects of python.
+These are words or numbers that can be used to be assigned to variables.
+
+EXAMPLES: 3, 8.51, ‘Hi’ 
+
+They are classified into different data types
+We will explain what ‘variables’ and ‘data types’ are in the following sections.

@@ -1,0 +1,11 @@
+Sequences are an ordered collection of information. We will cover 2 types of sequences in python; strings and lists
+
+You should have seen strings in the previous module. Strings are anything contained in quotation marks.
+
+EXAMPLE: ‘Hi’
+
+Lists are commonly used in python and are very important.
+To create a list, elements are added between square brackets and are separated by commas
+
+EXAMPLE: [‘This’, ‘is’, ‘a’, ‘list’]”
+Note: it is possible for lists to contain multiple data types (strings, integers, floats, booleans…)

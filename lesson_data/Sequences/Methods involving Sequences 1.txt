@@ -1,0 +1,5 @@
+Methods are also built into python to act on sequences.
+They are accessed by adding .method() after the sequence name, where ‘method’ is replaced with the actual name of the method.
+
+Strings are immutable. You can only create a new string that is a variation to the original string, you can’t alter the existing string.
+Lists are mutable. We can change an item in the list by accessing it directly as part of the assignment statement.

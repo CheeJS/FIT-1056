@@ -1,0 +1,31 @@
+The conditional statements in python include if, elif, and else keywords.
+These are used to run code depending on the state of the program.
+
+The general syntax for conditionals ae:
+if <boolean expression>:
+	<action>
+elif <boolean expression 2>:
+	<action>
+else:
+	<action>
+
+Here, if the first boolean expression is true, the action is run.
+‘elif’ is run if the first boolean expression was false and the second boolean expression is true.
+Else is run if all previous conditions are false.
+
+Note: elif can be used multiple times
+
+EXAMPLE:
+string = ‘python’
+if ‘b’ in string:
+	print(‘b present’)
+elif ‘g’ in string:
+	print(‘g present’)
+elif ‘a’ or ‘e’ or ‘i’ or ‘o’ or ‘u’ in string:
+	print(‘Vowel present’)
+else:
+	print(‘No tested letters present’)
+Returns ‘Vowel present’ as the first 2 statements are false and the third statement is true. As one of the elif statements is true, the else statement does not run.
+This is also a good example of using boolean logic, including the ‘in’ operator, to run code in python.
+
+Note: nested conditionals can be created by using an if statement inside of an if statement.

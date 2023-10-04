@@ -1,0 +1,11 @@
+Indexing is used to separate certain elements from a list or string
+This is done by using a number inside square brackets, placed after a variable
+The first index in a list is 0, then 1, 2..
+
+EXAMPLE 1: 
+University = “monash” 
+University[1] returns ‘o’, as the index [1] extracts the second element in the string.
+
+EXAMPLE 2:
+List = [‘This’, ‘is’, ‘a’, ‘list’]
+List[3] returns ‘list’, as the index [3] extracts the fourth element in the list.

@@ -1,0 +1,7 @@
+The break keyword can be used to immediately break out of a loop.
+This can be used simply by typing ‘break’, and once reached, the program exits the loop.
+
+The continue keyword is used to skip the rest of an iteration and go directly to the next iteration. 
+This can be used simply by typing ‘continue’.
+
+Breaking and continuing are commonly used in if statements, which we will cover shortly.

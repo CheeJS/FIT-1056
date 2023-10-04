@@ -1,0 +1,18 @@
+There are two boolean values: True and False.
+These can be called in python for a range of uses.
+We can use the equality operator, ==, to find the boolean value of an expression.
+
+EXAMPLE:
+sum = 1+2
+print(sum == 4) 
+Returns the boolean value ‘False’, as 3 is not equal to 4.
+
+The three logical operators we will cover are: and, or, and not.
+These can be used in boolean expressions and if statements to perform desired tasks.
+
+If both x and y are true,’ x and y’ will be true. 
+If either x or y are true, ‘x or y’ will be true.
+If x is false, ‘not x’ will be true.
+
+Boolean values and logical operators will become more useful once we introduce some of the following topics.
+

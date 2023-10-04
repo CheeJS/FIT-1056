@@ -1,0 +1,10 @@
+Concatenation is used to join sequences, with the + operator.
+
+EXAMPLE:
+[‘This’, ‘is’] + [‘a’, ‘list’]  creates [‘This’, ‘is’, ‘a’, ‘list’]
+
+
+Repetition is used to repeat elements in sequences, with the * operator
+
+EXAMPLE:
+‘Python’ *2  creates ‘PythonPython’
