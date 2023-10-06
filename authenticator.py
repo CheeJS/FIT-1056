@@ -1,3 +1,8 @@
+'''
+This file defines the Authenticator class, which is responsible for authenticating users based on their credentials.
+It loads user data, provides methods to authenticate users, and retrieve their roles.
+'''
+
 # Local application imports
 from User import User
 from Admin import Admin
@@ -7,6 +12,11 @@ from Teacher import Teacher
 class Authenticator:
 
     def __init__(self, file_path="./data/user_data.txt"):
+        """
+        Initializes the Authenticator and loads user data from the specified file.
+        Parameters:
+        file_path (str): The path to the user data file (default is "./data/user_data.txt").
+        """
         self.file_path = file_path
         self.users = []
         self.load_users()
@@ -61,6 +71,12 @@ class Authenticator:
         return False
     
     def authenticate_get_role(self, input_username, input_password):
+        """
+        Authenticate a user based on input credentials and retrieve their role.
+        :param input_username: str - username entered by the user
+        :param input_password: str - password entered by the user
+        :return: str or None
+        """
         self.users = []
         self.load_users()
         for user_obj in self.users:

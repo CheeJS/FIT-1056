@@ -1,3 +1,7 @@
+'''
+This module defines the LoginFrame class, which represents the login interface for the CodeVenture learning program
+'''
+
 # Third party imports
 import tkinter as tk
 
@@ -79,6 +83,9 @@ class LoginFrame(tk.Frame):
         
         
     def authenticate_login(self):
+        """
+        Authenticate the user's login credentials and open the appropriate interface based on their role.
+        """
         if self.auth.authenticate(self.username.get(),self.password.get()):   
             username = self.username.get()   
             password =  self.password.get()

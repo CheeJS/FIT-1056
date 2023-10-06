@@ -1,3 +1,8 @@
+'''
+This file defines the AdminFrame class, which represents the graphical user interface for the admin user
+It allows the admin to perform actions such as adding students and teachers, and viewing all students and teachers
+'''
+
 # Third party imports
 import tkinter as tk
 #from week09_interface import Interface
@@ -9,8 +14,14 @@ from application_layer import Application
 
 
 class AdminFrame(tk.Frame):
-
     def __init__(self, master,login_frame):
+        """
+        Initialises the AdminFrame and sets up the user interface components.
+        Parameters:
+        master (tk.Tk or tk.Toplevel): The parent window or frame
+        app (Application): An instance of the Application class that handles application logic
+        username (str): The username of the admin user
+        """
         super().__init__(master=master)
 
         self.app_layer = Application(master)
@@ -18,6 +29,7 @@ class AdminFrame(tk.Frame):
         login_title = tk.Label(self, text="Admin Interface", font=("Arial Bold", 25))
         login_title.grid(row=1, column=0, padx=10, pady=10, sticky="w")
 
+        #Creating buttons to perform various admin tasks
         students_btn = Button(self, text="Add Students", cursor='hand2', font=('yu gothic ui', 11, "bold"),
                               fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.add_user(2))
         students_btn.grid(row=2, column=0, padx=10, pady=10, sticky="w")
