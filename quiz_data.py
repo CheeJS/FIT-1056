@@ -101,27 +101,5 @@ quiz_data = [
         "choices": ["[“py”, “hon”,  “s”, “ring”]", "“pyhon spring”", "[“py”, “hon s”, “ring”]", "[“pyhon”, “sring”]"],
         "answer": "[“py”, “hon s”, “ring”]"
     }
-],
-    [
-    {
-        "question": "1111",
-        "choices": ["China", "Japan", "South Korea", "Thailand"],
-        "answer": "Japan"
-    },
-    {
-        "question": "What afsdg France?",
-        "choices": ["Paris", "London", "Berlin", "Madrid"],
-        "answer": "Paris"
-    },
-    {
-        "question": "What 123ur solar system?",
-        "choices": ["Jupiter", "Saturn", "Mars", "Earth"],
-        "answer": "Jupiter"
-    },
-    {
-        "question": "What is the che333old?",
-        "choices": ["Go", "Au", "Ag", "Gd"],
-        "answer": "Au"
-    }
 ]
 ]
