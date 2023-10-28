@@ -26,24 +26,31 @@ class LearnerFrame(tk.Frame):
         login_title = tk.Label(master=self,text="Learner Interface",font=("Arial Bold", 25))
         login_title.grid(row=1, columnspan=2, padx=10, pady=10)
 
-        #Creating buttons to perform various learner tasks
+
+        # Button to view lesson
         students_btn = Button(self, text="View Lesson", cursor='hand2', font=('yu gothic ui', 11, "bold"),
                               fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.select_lesson())
         students_btn.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 
+        # Button to attempt quizzes
         add_btn = Button(self, text="Attempt Quiz", cursor='hand2', font=('yu gothic ui', 11, "bold"),
                          fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.select_quiz(self.username ))
         add_btn.grid(row=3, column=0, padx=10, pady=10, sticky="w")
         
+        # Button to view quizzes grade
         view_student_btn = Button(self, text="View Grade", cursor='hand2', font=('yu gothic ui', 11, "bold"),
                          fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.student_get_grade(self.username ))
         view_student_btn.grid(row=4, column=0, padx=10, pady=10, sticky="w")
 
+        # Button to log out
         log_out_btn = Button(self, text="Log Out", cursor='hand2', font=('yu gothic ui', 11, "bold"),
                          fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.logout())
         log_out_btn.grid(row=5, column=0, padx=10, pady=10, sticky="w")
 
-
+        # Button to quit whole application
+        quit_btn = Button(self, text="Quit Game", cursor='hand2', font=('yu gothic ui', 11, "bold"),
+                         fg="white", bg='#9a258f', bd=0, activebackground='#9a258f',command=lambda: self.app_layer.quit())
+        quit_btn.grid(row=6, column=0, padx=10, pady=10, sticky="w")
 
 
 

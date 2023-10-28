@@ -21,7 +21,10 @@ from User import User
 
 class Application:
     def __init__(self,master, width=960, height=540):
-        # Initialize any necessary resources or settings here
+        """
+        FOR: None
+        Constructor of Application layer
+        """
         self.master = master
         self.width = width
         self.height = height
@@ -37,6 +40,7 @@ class Application:
         self.quiz_scores = {}
         self.quiz_options = quiz_data_title
         self.questions = quiz_data
+
 
     def update_user_data(self, user: User):
         """
@@ -91,6 +95,9 @@ class Application:
         lesson_combobox.place(x=150, y=30)
 
         def select_action():
+            """
+            Helper function for create_select_window()
+            """
             selected_lesson_name = selected_lesson.get()
             select_window.destroy()
             if tag == 0:
@@ -136,10 +143,19 @@ class Application:
 
             name, _ = os.path.splitext(lesson_files[current_file_index])
             folder_name_label = tk.Label(lesson_window, text=name, font=("Arial Bold", 25))
-            folder_name_label.grid(row=1, columnspan=3, padx=10, pady=10)
+            folder_name_label.grid(row=1, column=0, padx=10, pady=10, sticky='w')  # 'w' stands for west (left-aligned)
+
+
+            self.progressbar = ttk.Progressbar(lesson_window)
+            self.progressbar.grid(row=1, column=2)
+            self.progressbar.step(int(((current_file_index+1)/len(lesson_files))*100))
 
             lesson_text = tk.Text(lesson_window, wrap=tk.WORD, font=("Verdana", 12), height=20, width=90)
             lesson_text.grid(row=2, column=0, padx=10, pady=10, columnspan=3)
+
+
+
+
 
             scrollbar = tk.Scrollbar(lesson_window)
             scrollbar.grid(row=2, column=3, sticky="ns")
@@ -152,6 +168,7 @@ class Application:
                 lesson_text.config(state=tk.NORMAL if editing else tk.DISABLED)
 
             if current_file_index == len(lesson_files) - 1:
+                self.progressbar.step(99.9)
                 end_label = tk.Label(lesson_window, text="End of Lesson", font=("bold", 14))
                 end_label.grid(row=3, column=0, columnspan=3, pady=10)
             if editing == True:
@@ -167,9 +184,17 @@ class Application:
             return lesson_window
 
     def display_lesson(self, lesson_files, current_file_index, selected_lesson_name):
+        """
+        FOR: Student
+        Helper function for displaying lesson
+        """
         return self.display_lesson_common(lesson_files, current_file_index, selected_lesson_name)
 
     def display_edit_lesson(self, lesson_files, current_file_index, selected_lesson_name):
+        """
+        FOR: Teacher
+        Helper function for displaying lesson for teacher
+        """
         return self.display_lesson_common(lesson_files, current_file_index, selected_lesson_name, editing=True)
 
     def save_lesson_changes(self, lesson_text, selected_lesson_name, lesson_file):
@@ -218,14 +243,14 @@ class Application:
         quiz_combobox.place(x=140, y=30)
         quiz_combobox.set(self.quiz_options[0])
 
-        def start_quiz():
+        def start_selected_quiz():
             selected_quiz_index = quiz_combobox.current()  # Get the selected index
             selected_quiz_name = self.quiz_options[selected_quiz_index]  # Get the quiz name using the index
-            messagebox.showinfo("Selected Quiz",f"You selected: {selected_quiz_name} (Index: {selected_quiz_index})",)
+            messagebox.showinfo("Selected Quiz",f"You selected: {selected_quiz_name}")
             quiz_window.destroy()
             self.start_quiz(index=selected_quiz_index, username=username)
 
-        quiz_button = Button(quiz_window,text="Start Quiz",width=10,bg="green",fg="white",command=lambda:start_quiz())
+        quiz_button = Button(quiz_window,text="Start Quiz",width=10,bg="green",fg="white",command=lambda:start_selected_quiz())
         quiz_button.place(x=110, y=80)
 
     def start_quiz(self, index, username):
@@ -237,7 +262,7 @@ class Application:
         # Create a new window for the quiz
         quiz_window = tk.Toplevel()
         quiz_window.title("Quiz")
-        quiz_window.geometry(f"{self.width}x{self.height}")
+        quiz_window.geometry(f"{self.width}x{self.height+100}")
 
         # Define the quiz variables
         questions = self.questions[index]
@@ -247,7 +272,7 @@ class Application:
 
         # Create quiz elements
         question_label = tk.Label(quiz_window,height=5,width=28,bg="grey",fg="#fff",font=("Verdana", 20),wraplength=500)
-        question_label.pack(pady=10)
+        question_label.pack(pady=10)  #Have to use pack if not it won't work
 
         v1 = StringVar(quiz_window)
         v2 = StringVar(quiz_window)
@@ -268,6 +293,14 @@ class Application:
         button_next.pack(pady=10)
         user_ob = self.students[username]
 
+
+
+
+        answer_text = tk.StringVar()
+        answer_outcome_label = tk.Label(quiz_window, textvariable=answer_text, font=("Arial", 25))
+        answer_outcome_label.pack(pady=10)
+
+
         # Function to disable radio buttons
         def disable_buttons(state):
             option1["state"] = state
@@ -278,14 +311,18 @@ class Application:
         # Function to check the selected answer
         def check_answer(questions, current_question, selected_option, score):
             selected_choice = questions[current_question]["choices"][selected_option]
-            if selected_choice == questions[current_question]["answer"]:
+            answer  = questions[current_question]["answer"]
+            if selected_choice == answer:
                 self.score += 1
+            else:
+                answer_text.set("Correct Answer is:" + answer)
 
             disable_buttons("disable")
             button_next["state"] = "normal"
 
         # Function to display the next question
         def next_question(questions, quiz_window, total_questions):
+            answer_text.set("")
             if self.current_question < total_questions - 1:
                 self.current_question += 1
                 question_label.config(text=questions[self.current_question]["question"])
@@ -573,7 +610,9 @@ class Application:
             lastName= last_name_entry.get()
             username = username_entry.get()
             password = password_entry.get()
-            if firstName == "" or lastName == "" or username == "" or password == "":
+            if not (firstName.isalpha() and lastName.isalpha()):
+                tk.messagebox.showinfo('Invalid Message Alert', "First and last names should only include alphabets!")
+            elif firstName == "" or lastName == "" or username == "" or password == "":
                 tkinter.messagebox.showinfo("Invalid Message Alert", "Fields cannot be left empty!")
             else:
                 ## 1 for adding teacher, 2 for adding student
@@ -708,3 +747,5 @@ class Application:
     def logout(self):
         
         self.master.show_login_frame()
+    def quit(self):
+        self.master.destroy()
